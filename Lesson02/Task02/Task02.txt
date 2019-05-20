@@ -1,0 +1,17 @@
+public class Task02 {
+
+    public static void main(String[] args) {
+
+        DataTypesTester.testByte();
+        DataTypesTester.testShort();
+        DataTypesTester.testBoolean();
+        DataTypesTester.testChar();
+        DataTypesTester.testInt();
+        DataTypesTester.testFloat();
+        DataTypesTester.testLong();
+        DataTypesTester.testDouble();
+        DataTypesTester.testString();
+        DataTypesTester.testObj();
+
+    }
+}
