@@ -1,5 +1,3 @@
-package Task02;
-
 import java.util.Objects;
 
 public class Student {
