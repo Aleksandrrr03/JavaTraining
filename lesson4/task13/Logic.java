@@ -4,10 +4,9 @@ public class Logic {
 
     public static void checkForTriangle() {
 
-        int a, b, c;
-        a = 2;
-        b = 2;
-        c = 2;
+        int a = 2;
+        int b = 2;
+        int c = 2;
 
         if ((a + b <= c) || (a + c <= b) || (b + c <= a)) {
             System.out.println("The figure is not a triangle.");
