@@ -3,19 +3,26 @@ package task3;
 public class Logic {
 
     public static void compareNumbers() {
-        int number, a, b, c, d;
-        number = 3456;
 
-        d = number % 10;
-        c = (number / 10) % 10;
-        b = (number / 100) % 10;
-        a = (number / 1000) % 10;
+        int number = 3456;
+
+        int d = number % 10;
+        number /= 10;
+
+        int c = number % 10;
+        number /= 10;
+
+        int b = number % 10;
+        number /= 10;
+
+        int a = number % 10;
+
 
         System.out.printf("%d %d %d %d", a, b, c, d);
 
-        if (Logic.equals(a,b,c,d)==1) {
+        if (Logic.equals(a, b, c, d) == 1) {
             System.out.println("\nNumbers form an increasing sequence.");
-        } else if (Logic.equals(a,b,c,d)==2) {
+        } else if (Logic.equals(a, b, c, d) == 2) {
             System.out.println("\nNumbers form a decreasing sequence.");
         }
 
