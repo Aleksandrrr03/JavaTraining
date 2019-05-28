@@ -3,11 +3,10 @@ package task1;
 public class Test {
 
     public static void testing() {
-        int a, b, c;
 
-        a = 1;
-        b = 1;
-        c = 1;
+        int a = 1;
+        int b = 1;
+        int c = 1;
 
         if (NumberComparison.compareNumbers(a, b, c)) {
             System.out.printf("a=%d , b=%d , c=%d ;" + "\n", a, b, c);
