@@ -2,32 +2,48 @@ package task4;
 
 public class Logic {
 
-    final static int NUMBER = 143_456;
+    public static double findGeometricMean(int number, double numberOfDigits) {
 
-    public static float findGeometricMean(){
-        int a,b,c,d,e,f;
+        int f = number % 10;
+        number /= 10;
 
-        f = NUMBER % 10;
-        e = (NUMBER / 10) % 10;
-        d = (NUMBER / 100) % 10;
-        c = (NUMBER / 1000) % 10;
-        b = (NUMBER / 10000) % 10;
-        a = (NUMBER / 100000) % 10;
+        int e = number % 10;
+        number /= 10;
 
-        return (float) Math.exp(Math.log(a*b*c*d*e*f)/6);
+        int d = number % 10;
+        number /= 10;
+
+        int c = number % 10;
+        number /= 10;
+
+        int b = number % 10;
+        number /= 10;
+
+        int a = number % 10;
+
+        return Math.exp(Math.log(a * b * c * d * e * f) / numberOfDigits);
     }
 
-    public static float findArithmeticMean(){
-        int a,b,c,d,e,f;
+    public static double findArithmeticMean(int number, double numberOfDigits) {
 
-        f = NUMBER % 10;
-        e = (NUMBER / 10) % 10;
-        d = (NUMBER / 100) % 10;
-        c = (NUMBER / 1000) % 10;
-        b = (NUMBER / 10000) % 10;
-        a = (NUMBER / 100000) % 10;
+        int f = number % 10;
+        number /= 10;
 
-        return (a+b+c+d+e+f)/6;
+        int e = number % 10;
+        number /= 10;
+
+        int d = number % 10;
+        number /= 10;
+
+        int c = number % 10;
+        number /= 10;
+
+        int b = number % 10;
+        number /= 10;
+
+        int a = number % 10;
+
+        return (a + b + c + d + e + f) / numberOfDigits;
     }
 
 }
