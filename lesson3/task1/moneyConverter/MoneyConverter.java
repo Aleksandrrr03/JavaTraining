@@ -2,33 +2,30 @@ package moneyConverter;
 
 public class MoneyConverter {
 
-    static final float USD_INTO_EUR = 0.8942f;
-    static final float EUR_INTO_USD = 1.1183f;
-    static final float BYN_INTO_USD = 0.481f;
-    static final float BYN_INTO_EUR = 0.4301f;
+    static final double USD_INTO_EUR = 0.8942;
+    static final double EUR_INTO_USD = 1.1183;
+    static final double BYN_INTO_USD = 0.481;
+    static final double BYN_INTO_EUR = 0.4301;
 
 
-    public static float conversionUSDintoEUR(float usd){
+    public static float conversionUSDintoEUR(double usd){
 
         return usd*USD_INTO_EUR;
     }
 
-    public static float conversionEURintoUSD(float eur){
+    public static float conversionEURintoUSD(double eur){
 
         return eur*EUR_INTO_USD;
     }
 
-    public static float conversionBYNintoUSD(float byn){
+    public static float conversionBYNintoUSD(double byn){
 
         return byn*BYN_INTO_USD;
     }
 
-    public static float conversionBYNintoEUR(float byn){
+    public static float conversionBYNintoEUR(double byn){
 
         return byn*BYN_INTO_EUR;
     }
-
-
-
 
 }
