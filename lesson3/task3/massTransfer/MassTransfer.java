@@ -4,7 +4,7 @@ public class MassTransfer {
 
     public static double conversionKgToTon(int weight_kg) {
 
-        return  ((double)weight_kg / 1000);
+        return  (weight_kg / 1000.0);
     }
 
     public static long conversionKgToGram(int weight_kg) {
