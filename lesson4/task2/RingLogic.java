@@ -1,9 +1,10 @@
 package task2;
 
-public class RingLogic {
-    static final float PI = 3.14f;
+import static java.lang.Math.PI;
 
-    public static float findRingSquare(float r1, float r2) {
+public class RingLogic {
+
+    public static double findRingSquare(double r1, double r2) {
 
         if (r1 > r2) {
             return PI * (r1 * r1 - r2 * r2);
