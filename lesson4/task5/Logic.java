@@ -1,21 +1,51 @@
 package task5;
 
 public class Logic {
-    final static int NUMBER = 1_234_567;
 
-    public static int flipTheNumber(){
-        int a,b,c,d,e,f,g;
-        int flipNumber;
 
-        g = NUMBER % 10;
-        f = (NUMBER / 10) % 10;
-        e = (NUMBER / 100) % 10;
-        d = (NUMBER / 1000) % 10;
-        c = (NUMBER / 10000) % 10;
-        b = (NUMBER / 100000) % 10;
-        a = (NUMBER / 1000000) % 10;
+    public static int flipTheNumber(int number) {
 
-        flipNumber = a+b*10+c*100+d*1_000+e*10_000+f*100_000+g*1_000_000;
-        return  flipNumber;
+        int g = number % 10;
+        number /= 10;
+
+        int f = number % 10;
+        number /= 10;
+
+        int e = number % 10;
+        number /= 10;
+
+        int d = number % 10;
+        number /= 10;
+
+        int c = number % 10;
+        number /= 10;
+
+        int b = number % 10;
+        number /= 10;
+
+        int a = number % 10;
+
+
+        /* flip the number */
+        int flipNumber = g;
+
+        flipNumber *= 10;
+        flipNumber += f;
+
+        flipNumber *= 10;
+        flipNumber += e;
+
+        flipNumber *= 10;
+        flipNumber += d;
+
+        flipNumber *= 10;
+        flipNumber += c;
+
+        flipNumber *= 10;
+        flipNumber += b;
+
+        flipNumber += a;
+
+        return flipNumber;
     }
 }
