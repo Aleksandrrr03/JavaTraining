@@ -15,15 +15,11 @@ public class DragonLogic {
 
     public static int countHeads(int age) {
 
-        int numberOfHeads;
+        int numberOfHeads = 0;
 
-        if (age < ALLOWABLE_AGE) {
-            numberOfHeads = 0;
-        } else {
+        if (age >= ALLOWABLE_AGE) {
             numberOfHeads = FIRST_NUMBER_OF_HEADS;
-
             if (age == ALLOWABLE_AGE) {
-
                 return numberOfHeads;
             } else if (age <= FIRST_AGE_LIMIT) {
                 numberOfHeads += age * FIRST_NUMBER_OF_HEADS;
