@@ -1,8 +1,5 @@
 package by.epam.javatraining.kotkovets.maintask01.model.logic;
 
-import java.util.Collection;
-import java.util.Collections;
-
 /**
  * This class contains different static methods for working with array.
  *
@@ -25,13 +22,13 @@ public class VectorLogic {
 
     //This method finds the minimum value of the vector
     public static double findMinValue(double[] vector) {
-        double minValue = vector[0];
-        for (double i : vector) {
-            if (minValue > i) {
-                minValue = i;
+            double minValue = vector[0];
+            for (double i : vector) {
+                if (minValue > i) {
+                    minValue = i;
+                }
             }
-        }
-        return minValue;
+            return minValue;
     }
 
     //This method find the geometric average of vector values
@@ -121,7 +118,7 @@ public class VectorLogic {
     }
 
     //This method finds the first position of key value in the vector
-    public static int searchLinearFirstPosition(double[] vector, int key) {
+    public static int searchLinearFirstPosition(double[] vector, double key) {
         if (vector.length != 0) {
             for (int i = 0; i < vector.length; i++) {
                 if (vector[i] == key) {
@@ -133,7 +130,7 @@ public class VectorLogic {
     }
 
     //This method finds the last position of key value in the vector
-    public static int searchLinearLastPosition(double[] vector, int key) {
+    public static int searchLinearLastPosition(double[] vector, double key) {
         if (vector.length != 0) {
             for (int i = vector.length - 1; i >= 0; i--) {
                 if (vector[i] == key) {
@@ -175,23 +172,19 @@ public class VectorLogic {
     public static double[] reverseVector(double[] vector) {
         if (vector.length != 0) {
             for (int i = 0; i < vector.length / 2; i++) {
-                double tmp = vector[i];
-                vector[i] = vector[vector.length - 1 - i];
-                vector[vector.length - 1 - i] = tmp;
+                swaping(vector,i,vector.length - 1 - i);
             }
+            return vector;
         }
-        return vector;
+        return null;
     }
 
     //This method sorts all vector values in increasing order by bubble sort
     public static void sortBubbleIncrease(double[] vector) {
-        double tmp;
         for (int i = 1; i < vector.length; ++i) {
             for (int j = 0; j < vector.length - i; ++j) {
                 if (vector[j] > vector[j + 1]) {
-                    tmp = vector[j];
-                    vector[j] = vector[j + 1];
-                    vector[j + 1] = tmp;
+                    swaping(vector,j,j+1);
                 }
             }
         }
@@ -199,13 +192,10 @@ public class VectorLogic {
 
     //This method sorts all vector values in Decreasing order by bubble sort
     public static void sortBubbleDecrease(double[] vector) {
-        double tmp;
         for (int i = 1; i < vector.length; ++i) {
             for (int j = 0; j < vector.length - i; ++j) {
                 if (vector[j] < vector[j + 1]) {
-                    tmp = vector[j];
-                    vector[j] = vector[j + 1];
-                    vector[j + 1] = tmp;
+                    swaping(vector,j,j+1);
                 }
             }
         }
@@ -240,7 +230,6 @@ public class VectorLogic {
 
     //  This method sorts all vector values in increasing order by selection sort
     public static void sortSelectionIncrease(double[] vector) {
-        double tmp;
         for (int i = 0; i < vector.length - 1; ++i) {
             int k = i;
             for (int j = i + 1; j < vector.length; ++j) {
@@ -248,9 +237,7 @@ public class VectorLogic {
                     k = j;
                 }
             }
-            tmp = vector[k];
-            vector[k] = vector[i];
-            vector[i] = tmp;
+            swaping(vector,k,i);
         }
     }
 
@@ -311,7 +298,6 @@ public class VectorLogic {
         }
         int i = left, j = right;
         int average = i - (i - j) / 2;
-        double tmp;
         while (i < j) {
             while (i < average && ((order && vector[i] <= vector[average]) || (!order && vector[i] >= vector[average]))) {
                 i++;
@@ -320,9 +306,7 @@ public class VectorLogic {
                 j--;
             }
             if (i < j) {
-                tmp = vector[i];
-                vector[i] = vector[j];
-                vector[i] = tmp;
+                swaping(vector, i, j);
                 if (i == average) {
                     average = j;
                 } else if (j == average) {
@@ -332,5 +316,11 @@ public class VectorLogic {
                 sortQuick(vector, average + 1, right, order);
             }
         }
+    }
+
+    private static void swaping(double[] array, int firstIndex, int secondIndex) {
+        double tmp = array[firstIndex];
+        array[firstIndex] = array[secondIndex];
+        array[secondIndex] = tmp;
     }
 }
