@@ -9,6 +9,19 @@ package by.epam.javatraining.kotkovets.maintask01.model.logic;
 
 public class VectorLogic {
 
+    //This method adds a new value to the vector
+    public static double[] addValue(double[] vector, double value) {
+        double[] newVector = null;
+        if (vector.length != 0) {
+             newVector = new double[vector.length + 1];
+            for (int i = 0; i < vector.length; i++) {
+                newVector[i] = vector[i];
+            }
+            newVector[newVector.length - 1] = value;
+        }
+        return newVector;
+    }
+    
     //This method finds the maximum value of the vector
     public static double findMaxValue(double[] vector) {
         double maxValue = vector[0];
