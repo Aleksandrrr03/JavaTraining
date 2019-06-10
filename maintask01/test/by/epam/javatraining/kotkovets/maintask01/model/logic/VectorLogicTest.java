@@ -223,19 +223,19 @@ public class VectorLogicTest {
 
     @Test
     public void testSearchBinaryFirst() {
-        double[] vector = {7,7, 8, 10, 17};
+        double[] vector = {7, 7, 8, 10, 17};
         double key = 8;
         int expResult = 1;
         assertEquals(expResult, VectorLogic.searchBinaryFirst(vector, key));
     }
 
-     @Test
-     public void testSearchBinaryLastNotSortedVector() {
-         double[] vector = {74, 7, 9, 8, 7};
-         double key = 7;
-         int expResult = -1;
-         assertEquals(expResult, VectorLogic.searchBinaryLast(vector, key));
-     }
+    @Test
+    public void testSearchBinaryLastNotSortedVector() {
+        double[] vector = {74, 7, 9, 8, 7};
+        double key = 7;
+        int expResult = -1;
+        assertEquals(expResult, VectorLogic.searchBinaryLast(vector, key));
+    }
 
     @Test
     public void testSearchBinaryLastNotAvailable() {
@@ -247,7 +247,7 @@ public class VectorLogicTest {
 
     @Test
     public void testSearchBinaryLast() {
-        double[] vector = {7,7, 8, 10, 17};
+        double[] vector = {7, 7, 8, 10, 17};
         double key = 7;
         int expResult = 2;
         assertEquals(expResult, VectorLogic.searchBinaryLast(vector, key));
@@ -373,7 +373,6 @@ public class VectorLogicTest {
     }
 
 
-
     @Test
     public void testSortQuickIncreaseZero() {
         double[] vector = {};
@@ -406,5 +405,15 @@ public class VectorLogicTest {
         double[] expVector = {};
         VectorLogic.sortQuickDecrease(vector);
         assertArrayEquals(expVector, vector, 0.1);
+    }
+
+    @Test
+    public void testSwaping() {
+        double[] vector = {1, 2};
+        int firstIndex = 0;
+        int secondIndex = 1;
+        double[] expVector = {2,1};
+        VectorLogic.swaping(vector,firstIndex,secondIndex);
+        assertArrayEquals(expVector,vector,0.1);
     }
 }
