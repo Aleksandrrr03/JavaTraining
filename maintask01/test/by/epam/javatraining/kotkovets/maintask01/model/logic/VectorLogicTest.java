@@ -15,6 +15,24 @@ import static org.junit.Assert.*;
 
 public class VectorLogicTest {
 
+     @Test
+    public void testAddValue(){
+        double[] vector = {1,2,3};
+        double value = 5;
+        double[] expVector = {1,2,3,5};
+        double[] newVector = VectorLogic.addValue(vector,value);
+        assertArrayEquals(expVector,newVector,0.1);
+    }
+
+    @Test
+    public void testAddValueZero(){
+        double[] vector = {};
+        double value = 5;
+        String expResult = null;
+        double[] newVector = VectorLogic.addValue(vector,value);
+        assertEquals(expResult,newVector);
+    }
+    
     @Test
     public void testFindMaxValue() {
         double[] vector = {1.2, 0.3, 0.9, 6.3, 74, 20.5};
