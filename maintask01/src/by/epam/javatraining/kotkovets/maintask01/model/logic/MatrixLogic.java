@@ -57,7 +57,7 @@ public class MatrixLogic {
                         return false; // If not symmetric
                     }
                 }
-            }
+            } 
             return true; // If symmetric;
         }
         return false; // If not square, so not be symmetric
@@ -88,5 +88,5 @@ public class MatrixLogic {
             }
         }
     }
-
+ 
 }
