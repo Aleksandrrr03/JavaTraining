@@ -1,7 +1,6 @@
 package by.epam.javatraining.kotkovets.maintask01.model.logic;
 
 
-import org.junit.Assert;
 import org.junit.Test;
 
 import static org.junit.Assert.assertArrayEquals;
@@ -18,6 +17,37 @@ import static org.junit.Assert.assertEquals;
 public class MatrixLogicTest {
 
     @Test
+    public void testIsZeroMatrixNot() {
+        double[][] matrix = {
+                {1},
+                {2, 3}
+        };
+        boolean expResult = false;
+        assertEquals(expResult, MatrixLogic.isZeroMatrix(matrix));
+    }
+
+
+    @Test
+    public void testIsZeroMatrixFirst() {
+        double[][] matrix = new double[0][0];
+        boolean expResult = true;
+        assertEquals(expResult, MatrixLogic.isZeroMatrix(matrix));
+    }
+
+    @Test
+    public void testIsZeroMatrixSecond() {
+        double[][] matrix = new double[1][0];
+        boolean expResult = true;
+        assertEquals(expResult, MatrixLogic.isZeroMatrix(matrix));
+    }
+
+    @Test
+    public void testIsZeroMatrixThird() {
+        double[][] matrix = new double[0][1];
+        boolean expResult = true;
+        assertEquals(expResult, MatrixLogic.isZeroMatrix(matrix));
+    }
+    @Test
     public void testFindMaxValue() {
         double[][] matrix = {
                 {1, 3, 6},
@@ -28,8 +58,22 @@ public class MatrixLogicTest {
     }
 
     @Test
-    public void testFindMaxValueZero() {
-        double[][] matrix = {};
+    public void testFindMaxValueZeroFirst() {
+        double[][] matrix = new double[0][0];
+        double expValue = Double.MIN_VALUE;
+        assertEquals(expValue, MatrixLogic.findMaxValue(matrix), 0.1);
+    }
+
+    @Test
+    public void testFindMaxValueZeroSecond() {
+        double[][] matrix = new double[0][1];
+        double expValue = Double.MIN_VALUE;
+        assertEquals(expValue, MatrixLogic.findMaxValue(matrix), 0.1);
+    }
+
+    @Test
+    public void testFindMaxValueZeroThird() {
+        double[][] matrix = new double[1][0];
         double expValue = Double.MIN_VALUE;
         assertEquals(expValue, MatrixLogic.findMaxValue(matrix), 0.1);
     }
@@ -45,8 +89,22 @@ public class MatrixLogicTest {
     }
 
     @Test
-    public void testFindMinValueZero() {
-        double[][] matrix = {};
+    public void testFindMinValueZeroFirst() {
+        double[][] matrix = new double[0][0];
+        double expValue = Double.MAX_VALUE;
+        assertEquals(expValue, MatrixLogic.findMinValue(matrix), 0.1);
+    }
+
+    @Test
+    public void testFindMinValueZeroSecond() {
+        double[][] matrix = new double[0][1];
+        double expValue = Double.MAX_VALUE;
+        assertEquals(expValue, MatrixLogic.findMinValue(matrix), 0.1);
+    }
+
+    @Test
+    public void testFindMinValueZeroThird() {
+        double[][] matrix = new double[1][0];
         double expValue = Double.MAX_VALUE;
         assertEquals(expValue, MatrixLogic.findMinValue(matrix), 0.1);
     }
@@ -79,12 +137,7 @@ public class MatrixLogicTest {
         assertEquals(expResult, MatrixLogic.isSquare(matrix));
     }
 
-    @Test
-    public void testIsNullNot() {
-        double[][] matrix = {{1}, {2, 3}};
-        boolean expResult = false;
-        assertEquals(expResult, MatrixLogic.isNullMatrix(matrix));
-    }
+
 
     @Test
     public void testIsSymmetric() {
