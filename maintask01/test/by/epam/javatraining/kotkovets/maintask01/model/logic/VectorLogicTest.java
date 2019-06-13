@@ -2,9 +2,8 @@ package by.epam.javatraining.kotkovets.maintask01.model.logic;
 
 import org.junit.Test;
 
-import java.util.Arrays;
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
 
 /**
  * This class contains unit-tests for check class VectorLogic.
@@ -15,24 +14,6 @@ import static org.junit.Assert.*;
 
 public class VectorLogicTest {
 
-     @Test
-    public void testAddValue(){
-        double[] vector = {1,2,3};
-        double value = 5;
-        double[] expVector = {1,2,3,5};
-        double[] newVector = VectorLogic.addValue(vector,value);
-        assertArrayEquals(expVector,newVector,0.1);
-    }
-
-    @Test
-    public void testAddValueZero(){
-        double[] vector = {};
-        double value = 5;
-        String expResult = null;
-        double[] newVector = VectorLogic.addValue(vector,value);
-        assertEquals(expResult,newVector);
-    }
-    
     @Test
     public void testFindMaxValue() {
         double[] vector = {1.2, 0.3, 0.9, 6.3, 74, 20.5};
@@ -241,15 +222,23 @@ public class VectorLogicTest {
 
     @Test
     public void testSearchBinaryFirst() {
-        double[] vector = {7, 7, 8, 10, 17};
+        double[] vector = {6, 7, 8, 10, 17};
         double key = 8;
-        int expResult = 1;
+        int expResult = 2;
+        assertEquals(expResult, VectorLogic.searchBinaryFirst(vector, key));
+    }
+
+    @Test
+    public void testSearchBinaryFirstZeroVector() {
+        double[] vector = new double[0];
+        int key = 1;
+        int expResult = -1;
         assertEquals(expResult, VectorLogic.searchBinaryFirst(vector, key));
     }
 
     @Test
     public void testSearchBinaryLastNotSortedVector() {
-        double[] vector = {74, 7, 9, 8, 7};
+        double[] vector = {74, 7, 9, 8, 20};
         double key = 7;
         int expResult = -1;
         assertEquals(expResult, VectorLogic.searchBinaryLast(vector, key));
@@ -265,73 +254,119 @@ public class VectorLogicTest {
 
     @Test
     public void testSearchBinaryLast() {
-        double[] vector = {7, 7, 8, 10, 17};
-        double key = 7;
+        double[] vector = {6, 7, 8, 10, 17};
+        double key = 8;
         int expResult = 2;
         assertEquals(expResult, VectorLogic.searchBinaryLast(vector, key));
     }
 
     @Test
-    public void testReverseVector() {
-        double[] vector = {5, 6, 4, 8, 1};
-        double[] expVector = {1, 8, 4, 6, 5};
-        assertEquals(Arrays.hashCode(expVector), Arrays.hashCode(VectorLogic.reverseVector(vector)));
-        // assertArrayEquals(expVector,vector,0.1);
+    public void testSearchBinaryLastZeroVector() {
+        double[] vector = new double[0];
+        int key = 1;
+        int expResult = -1;
+        assertEquals(expResult, VectorLogic.searchBinaryLast(vector, key));
     }
 
     @Test
+    public void testSearchBinarySecond() {
+        double[] vector = {6, 7, 8, 10, 17};
+        double key = 8;
+        int expResult = 2;
+        assertEquals(expResult, VectorLogic.searchBinarySecond(vector, key));
+    }
+
+    @Test
+    public void testSearchBinarySecondNotAvailable() {
+        double[] vector = {6, 7, 8, 10, 17};
+        double key = 15;
+        int expResult = -1;
+        assertEquals(expResult, VectorLogic.searchBinarySecond(vector, key));
+    }
+
+    @Test
+    public void testSearchBinarySecondZeroVector() {
+        double[] vector = new double[0];
+        double key = 8;
+        int expResult = -1;
+        assertEquals(expResult, VectorLogic.searchBinarySecond(vector, key));
+    }
+
+    @Test
+    public void testSearchBinarySecondNotSorted() {
+        double[] vector = {6, 7, 80, 10, 17};
+        double key = 17;
+        int expResult = -1;
+        assertEquals(expResult, VectorLogic.searchBinarySecond(vector, key));
+    }
+
+    @Test
+    public void testReverseVector() {
+        double[] vector = {5, 6, 4, 8, 1};
+        boolean expResult = true;
+        assertEquals(expResult, VectorLogic.reverseVector(vector));
+    }
+
+
+    @Test
     public void testReverseVectorZero() {
-        double[] vector = {};
-        String expResult = null;
-        assertNull((expResult), (VectorLogic.reverseVector(vector)));
+        double[] vector = new double[0];
+        boolean expResult = false;
+        assertEquals(expResult, VectorLogic.reverseVector(vector));
     }
 
     @Test
     public void testSortBubbleIncrease() {
         double[] vector = {5, 6, 4, 8, 1};
-        double[] expVector = {1, 4, 5, 6, 8};
-        VectorLogic.sortBubbleIncrease(vector);
-        assertArrayEquals(expVector, vector, 0.1);
+        boolean expResult = true;
+        assertEquals(expResult, VectorLogic.sortBubbleIncrease(vector));
+    }
+
+    @Test
+    public void testSortBubbleIncreaseZeroVector() {
+        double[] vector = new double[0];
+        boolean expResult = false;
+        assertEquals(expResult, VectorLogic.sortBubbleIncrease(vector));
     }
 
     @Test
     public void testSortBubbleDecrease() {
         double[] vector = {5, 6, 4, 8, 1};
-        double[] expVector = {8, 6, 5, 4, 1};
-        VectorLogic.sortBubbleDecrease(vector);
-        assertArrayEquals(expVector, vector, 0.1);
+        boolean expResult = true;
+        assertEquals(expResult, VectorLogic.sortBubbleDecrease(vector));
     }
 
     @Test
-    public void testSortBubbleDecreaseZero() {
-        double[] vector = {};
-        double[] expVector = {};
-        VectorLogic.sortBubbleDecrease(vector);
-        assertArrayEquals(expVector, vector, 0.1);
+    public void testSortBubbleDecreaseZeroVector() {
+        double[] vector = new double[0];
+        boolean expResult = false;
+        assertEquals(expResult, VectorLogic.sortBubbleDecrease(vector));
     }
 
     @Test
     public void testSortInsertionIncrease() {
-        double[] array = {5, 8, 40, 9, 38};
+        boolean expResult = true;
+        double[] vector = {5, 8, 40, 9, 38};
         double[] expVector = {5, 8, 9, 38, 40};
-        VectorLogic.sortInsertionIncrease(array);
-        assertArrayEquals(expVector, array, 0.1);
+        assertEquals(expResult, VectorLogic.sortInsertionIncrease(vector));
+        assertArrayEquals(expVector, vector, 0.1);
     }
 
     @Test
     public void testSortInsertionIncreaseZero() {
+        boolean expResult = false;
         double[] vector = {};
         double[] expVector = {};
-        VectorLogic.sortInsertionIncrease(vector);
+        assertEquals(expResult, VectorLogic.sortInsertionIncrease(vector));
         assertArrayEquals(expVector, vector, 0.1);
     }
 
     @Test
     public void testSortInsertionDecrease() {
-        double[] array = {5, 8, 40, 9, 38};
+        double[] vector = {5, 8, 40, 9, 38};
         double[] expVector = {40, 38, 9, 8, 5};
-        VectorLogic.sortInsertionDecrease(array);
-        assertArrayEquals(expVector, array, 0.1);
+        VectorLogic.sortInsertionDecrease(vector);
+        assertArrayEquals(expVector, vector, 0.1);
     }
 
     @Test
@@ -344,10 +379,10 @@ public class VectorLogicTest {
 
     @Test
     public void testSortSelectionIncrease() {
-        double[] array = {5, 8, 40, 9, 38};
+        double[] vector = {5, 8, 40, 9, 38};
         double[] expVector = {5, 8, 9, 38, 40};
-        VectorLogic.sortSelectionIncrease(array);
-        assertArrayEquals(expVector, array, 0.1);
+        VectorLogic.sortSelectionIncrease(vector);
+        assertArrayEquals(expVector, vector, 0.1);
     }
 
     @Test
@@ -360,10 +395,10 @@ public class VectorLogicTest {
 
     @Test
     public void testSortMergeDecrease() {
-        double[] array = {5, 8, 40, 9, 38};
+        double[] vector = {5, 8, 40, 9, 38};
         double[] expVector = {40, 38, 9, 8, 5};
-        VectorLogic.sortMergeDecrease(array);
-        assertArrayEquals(expVector, array, 0.1);
+        VectorLogic.sortMergeDecrease(vector);
+        assertArrayEquals(expVector, vector, 0.1);
     }
 
     @Test
@@ -376,10 +411,10 @@ public class VectorLogicTest {
 
     @Test
     public void testSortMergeIncrease() {
-        double[] array = {5, 8, 40, 9, 38};
+        double[] vector = {5, 8, 40, 9, 38};
         double[] expVector = {5, 8, 9, 38, 40};
-        VectorLogic.sortMergeIncrease(array);
-        assertArrayEquals(expVector, array, 0.1);
+        VectorLogic.sortMergeIncrease(vector);
+        assertArrayEquals(expVector, vector, 0.1);
     }
 
     @Test
@@ -411,10 +446,10 @@ public class VectorLogicTest {
 
     @Test
     public void testSortQuickDecrease() {
-        double[] array = {5, 8, 40, 9, 38};
+        double[] vector = {5, 8, 40, 9, 38};
         double[] expVector = {40, 38, 9, 8, 5};
-        VectorLogic.sortQuickDecrease(array);
-        assertArrayEquals(expVector, array, 0.1);
+        VectorLogic.sortQuickDecrease(vector);
+        assertArrayEquals(expVector, vector, 0.1);
     }
 
     @Test
@@ -426,12 +461,30 @@ public class VectorLogicTest {
     }
 
     @Test
-    public void testSwaping() {
+    public void testSwap() {
         double[] vector = {1, 2};
         int firstIndex = 0;
         int secondIndex = 1;
-        double[] expVector = {2,1};
-        VectorLogic.swaping(vector,firstIndex,secondIndex);
-        assertArrayEquals(expVector,vector,0.1);
+        double[] expVector = {2, 1};
+        VectorLogic.swap(vector, firstIndex, secondIndex);
+        assertArrayEquals(expVector, vector, 0.1);
+    }
+
+    @Test
+    public void testAddValue() {
+        double[] vector = {1, 2, 3};
+        double value = 5;
+        double[] expVector = {1, 2, 3, 5};
+        double[] newVector = VectorLogic.addValue(vector, value);
+        assertArrayEquals(expVector, newVector, 0.1);
+    }
+
+    @Test
+    public void testAddValueZero() {
+        double[] vector = {};
+        double value = 5;
+        String expResult = null;
+        double[] newVector = VectorLogic.addValue(vector, value);
+        assertEquals(expResult, newVector);
     }
 }
